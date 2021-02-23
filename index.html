@@ -9,25 +9,48 @@
 
 <body>
   <nav class="sidebar">
-    <h1>IdeaBox</h1>
-    <p>Filter Starred Ideas</p>
-    <button id="show-starred-ideas-button">Show Starred Ideas</button>
+    <h1 class="sidebar-element">IdeaBox</h1>
+    <div class="sidebar-element">
+      <label for="show-starred-ideas-button">Filter Starred Ideas</label>
+      <button id="show-starred-ideas-button">Show Starred Ideas</button>
+    </div>
   </nav>
   <main>
     <fieldset class="create">
-      <label for="title-input">Title</label>
-      <input type="text" id="title-input">
-      <label for="body-input">Body</label>
-      <input type="text" id="title-input">
-      <button id="save-button">Save</button>
-      <svg id="search-icon"></svg><input type="search">
+      <div class="create-inputs">
+        <label for="title-input">Title</label>
+        <textarea class="title-input" id="title-input"></textarea>
+        <label for="body-input">Body</label>
+        <textarea class="body-input" id="body-input"></textarea>
+        <button class="save-button" id="save-button">Save</button>
+        <div class="search-button-wrapper">
+          <button class="search-button" id="search-button">
+            <img src="assets/icons/search.svg" alt="">
+          </button>
+          <input type="search" placeholder="Search Ideas">
+        </div>
+      </div>
     </fieldset>
     <section class="saved">
       <output class="idea">
-        <div class="idea-header"><svg></svg></div>
-        <h4>Idea Title</h4>
-        <p>Idea Body. Don't ever play yourself drink water and stuff.</p>
-        <button id="comment-button">Comment<svg id="plus-icon"></svg></button>
+        <header class="idea-header">
+          <button class="favorite-button" id="favorite-button">
+          <img src="assets/icons/star-active.svg" alt="favorite-star">
+          </button>
+          <button class="close-button">
+          <img src="assets/icons/menu-close.svg" alt="menu-close">
+          </button>
+        </header>
+        <div class="idea-body">
+          <h4>Idea Title</h4>
+          <p>Idea Body. Don't ever play yourself drink water and stuff. Blah blah blah blah blah blah</p>
+        </div>
+        <div class="comment-button-wrapper">
+        <button id="comment-button">
+          <img src="assets/icons/comment.svg" alt="">
+        </button>
+        <p>Comment</p>
+        </div>
       </output>
     </section>
   </main>
