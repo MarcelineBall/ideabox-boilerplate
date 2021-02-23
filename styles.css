@@ -25,6 +25,26 @@ COLORS
 body {
   margin: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: stretch;
+  font-family: 'Open Sans';
+}
+nav {
+  background-color: #1F1F3D;
+  color: #E9E9F3
+}
+.create {
+  background-color: #A9AAD2;
+  color: #1F1F3D;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.saved {
+  background-color: #EAEAF4;
+}
+.idea {
+  background-color: #FFFFFF;
+  color: #1F1F3D;
 }
