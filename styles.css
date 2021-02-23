@@ -27,4 +27,29 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
+  font-family: "Open Sans";
+}
+nav {
+background-color:#1F1F3D;
+color:#FFFFFF;
+
+
+}
+.create {
+  width: fit-content;
+  block-size: fit-content;
+  background-color:#A9AAD2;
+  color:#1F1F3D;
+}
+#save-button {
+  background-color:#353567;
+  color:#E9E9F3;
+}
+.saved {
+  background-color: #EAEAF4;
+
+}
+#show-starred-ideas-button {
+  background-color:#5356A4;
+  color:#E9E9F3;
 }
