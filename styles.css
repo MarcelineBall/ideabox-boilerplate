@@ -22,3 +22,9 @@ COLORS
     Show Starred BG: #5356A4
     Show Starred Font-Color: #E9E9F3
  */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}

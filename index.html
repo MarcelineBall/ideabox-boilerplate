@@ -13,8 +13,8 @@
     <p>Filter Starred Ideas</p>
     <button id="show-starred-ideas-button">Show Starred Ideas</button>
   </nav>
-  <main class="create">
-    <fieldset>
+  <main>
+    <fieldset class="create">
       <label for="title-input">Title</label>
       <input type="text" id="title-input">
       <label for="body-input">Body</label>
@@ -22,15 +22,15 @@
       <button id="save-button">Save</button>
       <svg id="search-icon"></svg><input type="search">
     </fieldset>
+    <section class="saved">
+      <output class="idea">
+        <div class="idea-header"><svg></svg></div>
+        <h4>Idea Title</h4>
+        <p>Idea Body. Don't ever play yourself drink water and stuff.</p>
+        <button id="comment-button"><svg id="plus-icon"></svg></button>
+      </output>
+    </section>
   </main>
-  <section class="saved">
-    <output class="idea">
-      <div class="idea-header"><svg></svg></div>
-      <h4>Idea Title</h4>
-      <p>Idea Body. Don't ever play yourself drink water and stuff.</p>
-      <button id="comment-button"><svg id="plus-icon"></svg></button>
-    </output>
-  </section>
   <script src="./src/main.js"></script>
 </body>
 
