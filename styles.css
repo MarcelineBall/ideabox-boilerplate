@@ -23,20 +23,19 @@ COLORS
     Show Starred Font-Color: #E9E9F3
  */
 html {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
   background-attachment: fixed;
   padding: 0;
   margin: 0;
-  min-height: 100vh;
-  min-width: 100vw;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
   font-family: 'Open Sans';
-  font-weight: light;
 }
 
 input {
@@ -63,6 +62,7 @@ button {
 }
 
 .sidebar {
+  height: 100%;
   width: 20%;
   min-width: 10em;
   background-color: #1F1F3D;
@@ -95,6 +95,7 @@ button {
 main {
   display: flex;
   flex-direction: column;
+  height: 100%;
   width: 100%;
 }
 
@@ -111,22 +112,29 @@ main {
 .create-inputs {
   width: 100%;
   max-width: 30em;
-  min-width: auto;
+  padding-top: 20em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
+  overflow-y: scroll;
+}
+
+.create-inputs::-webkit-scrollbar {
+  display: none !important;
 }
 
 .create-inputs>* {
-  margin: 1.9% 0;
+  margin-top: 1.9%;
 }
 
 .create-inputs>label {
   font-weight: bold;
 }
 
-.create-inputs>textarea {}
+.create-inputs>textarea {
+  min-height: 2em;
+}
 
 .title-input {
   height: 5em;
@@ -176,15 +184,26 @@ main {
 .saved {
   height: 50%;
   background-color: #EAEAF4;
-  padding: 1%;
+  padding: 1% 1% 5% 1%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+
+.saved::-webkit-scrollbar {
+  display: none;
 }
 
 .idea {
   width: 30%;
-  max-width: 10em;
-  min-width: 15em;
-  min-height: 50%;
+  max-width: 12em;
+  min-width: 12em;
+  max-height: 15em;
+  min-height: 15em;
   padding: 0;
+  margin: 1%;
   background-color: #FFFFFF;
   color: #1F1F3D;
   border: 2px solid #1F1F3D;
@@ -193,13 +212,19 @@ main {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  /* flex-grow: auto; */
+  overflow-y: scroll;
+}
+
+.idea::-webkit-scrollbar {
+  display: none !important;
 }
 
 .idea-header {
   height: 2em;
   width: 100%;
   background: #1F1F3D;
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -226,18 +251,28 @@ main {
 }
 
 .idea-body {
-  padding: 0 1%;
+  padding: 0 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+.idea-body>p {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .comment-button-wrapper {
-  width: 100%;
   height: 2em;
-  border: none;
+  width: 100%;
+  border-bottom: none;
   border-top: solid 2px #1F1F3D;
   border-radius: 0;
   background: #5356A4;
   color: #E9E9F3;
   font-weight: bold;
+  position: sticky;
+  bottom: 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -249,6 +284,7 @@ main {
   background: #5356A4;
   color: #E9E9F3;
 }
+
 .comment-button-wrapper>button>img {
   width: 3em;
   height: 100%;
