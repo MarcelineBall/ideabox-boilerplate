@@ -31,7 +31,8 @@ function createIdea() {
       </output>`
   var childNode = document.createRange().createContextualFragment(ideaCardHTML)
   if (event.target.className === 'save-button') {
-    new Idea(title.value, body.value);
+    var idea = new Idea(title.value, body.value);
     savedIdeaParentElement.appendChild(childNode);
+    idea.nodeValue = childNode;
   };
 };

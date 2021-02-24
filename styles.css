@@ -214,19 +214,14 @@ main {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  overflow-y: scroll;
 }
 
-.idea::-webkit-scrollbar {
-  display: none !important;
-}
+
 
 .idea-header {
   height: 2em;
   width: 100%;
   background: #1F1F3D;
-  position: sticky;
-  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -252,25 +247,29 @@ main {
 
 .idea-body {
   height: 10em;
+  margin-left: 2%;
   padding: 0 2%;
   display: flex;
   flex-direction: column;
+}
+
+.idea-body>h4 {
+  align-self: flex-start;
+  margin: 0;
+  margin-bottom: 4%;
 }
 
 .idea-body>p {
   display: block;
   align-self: center;
   width: 11em;
-  padding: 0 0 10% 0;
-  margin: 0 0 0 5%;
+  margin: 0;
   word-break: break-all;
   hyphens: auto;
+  overflow-y: scroll;
 }
-
-.idea-body>h4 {
-  align-self: flex-start;
-  margin-top: 0;
-  margin-left: 0;
+.idea-body>p::-webkit-scrollbar {
+  display: none !important;
 }
 
 .comment-button-wrapper {
@@ -282,10 +281,7 @@ main {
   background: #5356A4;
   color: #E9E9F3;
   font-weight: bold;
-  position: sticky;
-  bottom: 0;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 }
 
