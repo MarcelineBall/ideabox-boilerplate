@@ -22,34 +22,123 @@ COLORS
     Show Starred BG: #5356A4
     Show Starred Font-Color: #E9E9F3
  */
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: stretch;
   font-family: "Open Sans";
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 0;
+  border: none;
 }
+
+button {
+  font-family: "Open Sans";
+  font-weight: bold;
+  border: none;
+  margin: 0;
+}
+
 nav {
-background-color:#1F1F3D;
-color:#FFFFFF;
-
-
+  background-color: #1F1F3D;
+  color: #FFFFFF;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 2%;
 }
+
+nav>button {
+  background-color: #5356A4;
+  color: #E9E9F3;
+  width: 60%;
+  height: 5%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .create {
-  width: fit-content;
+  border: none;
+  background-color: #A9AAD2;
+  margin: 0;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.create-inputs {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.saved {
+  height: 50%;
+}
+
+.create-inputs>label {
+  margin-bottom: -17%;
+  font-weight: bold;
+}
+
+.create-inputs>textarea {
+  resize: none;
+  margin-top: 5%;
+}
+
+#save-button {
+  background-color: #353567;
+  color: #E9E9F3;
+  height: 10%;
+}
+.body-input {
+  height:20%;
+}
+.search-bar-container {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.search-bar-container>input {
+  width: 100%;
+}
+.search-bar-container>button{
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#353567;
+}
+.search-image {
+  width: 100%;
+}
+
+
+/* .create {
+  width: 100vw;
   block-size: fit-content;
   background-color:#A9AAD2;
   color:#1F1F3D;
 }
-#save-button {
-  background-color:#353567;
-  color:#E9E9F3;
-}
-.saved {
+ .saved {
   background-color: #EAEAF4;
+  height: 100vh;
 
 }
 #show-starred-ideas-button {
   background-color:#5356A4;
   color:#E9E9F3;
-}
+} */
