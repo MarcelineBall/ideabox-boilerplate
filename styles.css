@@ -288,3 +288,6 @@ main {
   width: 3em;
   height: 100%;
 }
+.hidden {
+  display: none !important;
+}
