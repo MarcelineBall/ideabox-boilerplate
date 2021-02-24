@@ -188,8 +188,8 @@ main {
   background-color: #EAEAF4;
   padding: 1% 1% 5% 1%;
   display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   overflow-y: scroll;
 }
@@ -251,15 +251,26 @@ main {
 }
 
 .idea-body {
+  height: 10em;
   padding: 0 2%;
   display: flex;
   flex-direction: column;
 }
 
 .idea-body>p {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  display: block;
+  align-self: center;
+  width: 11em;
+  padding: 0 0 10% 0;
+  margin: 0 0 0 5%;
+  word-break: break-all;
+  hyphens: auto;
+}
+
+.idea-body>h4 {
+  align-self: flex-start;
+  margin-top: 0;
+  margin-left: 0;
 }
 
 .comment-button-wrapper {
@@ -288,6 +299,7 @@ main {
   width: 3em;
   height: 100%;
 }
+
 .hidden {
   display: none !important;
 }
