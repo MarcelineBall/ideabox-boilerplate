@@ -188,8 +188,8 @@ main {
   background-color: #EAEAF4;
   padding: 1% 1% 5% 1%;
   display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   overflow-y: scroll;
 }
@@ -246,11 +246,12 @@ main {
 }
 
 .idea-body {
-<<<<<<< Updated upstream
+  height: 10em;
+  margin-left: 2%;
 =======
   height: 10em;
   margin-left: 2%;
->>>>>>> Stashed changes
+>>>>>>> chris/iteration1/styling
   padding: 0 2%;
   display: flex;
   flex-direction: column;
@@ -263,10 +264,10 @@ main {
 }
 
 .idea-body>p {
-<<<<<<< Updated upstream
+  display: block;
+  align-self: center;
+  width: 11em;
   margin: 0;
-  padding: 0;
-  height: 100%;
 =======
   display: block;
   align-self: center;
@@ -278,7 +279,6 @@ main {
 }
 .idea-body>p::-webkit-scrollbar {
   display: none !important;
->>>>>>> Stashed changes
 }
 
 .comment-button-wrapper {
@@ -304,6 +304,7 @@ main {
   width: 3em;
   height: 100%;
 }
+
 .hidden {
   display: none !important;
 }

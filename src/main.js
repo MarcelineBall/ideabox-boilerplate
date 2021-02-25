@@ -4,6 +4,7 @@ var createIdeaParentElement = document.querySelector('.create-inputs');
 var savedIdeaParentElement = document.querySelector('.saved');
 
 createIdeaParentElement.addEventListener('click', createIdea);
+savedIdeaParentElement.addEventListener('click', /*function*/);
 
 function createIdea() {
   var title = document.getElementById('titleInput');
@@ -14,7 +15,7 @@ function createIdea() {
           <button class="favorite-button" id="favorite-button">
             <img src="assets/icons/star-active.svg" alt="favorite-star">
           </button>
-          <button class="close-button">
+          <button class="close-button" id="close-button">
             <img src="assets/icons/menu-close.svg" alt="menu-close">
           </button>
         </header>
