@@ -1,39 +1,42 @@
 var ideas = [];
 var favoriteIdeas = [];
-var createIdeaParentElement = document.querySelector('.create-inputs');
-var savedIdeaParentElement = document.querySelector('.saved');
 
-createIdeaParentElement.addEventListener('click', createIdea);
-savedIdeaParentElement.addEventListener('click', /*function*/);
+var createIdeaContainer = document.querySelector('.create');
+var savedIdeaContainer = document.querySelector('.saved');
 
-function createIdea() {
-  var title = document.getElementById('titleInput');
-  var body = document.getElementById('bodyInput');
-  var ideaCardHTML = `
-      <output class="idea">
-        <header class="idea-header">
-          <button class="favorite-button" id="favorite-button">
-            <img src="assets/icons/star-active.svg" alt="favorite-star">
-          </button>
-          <button class="close-button" id="close-button">
-            <img src="assets/icons/menu-close.svg" alt="menu-close">
-          </button>
-        </header>
-        <div class="idea-body">
-          <h4>${title.value}</h4>
-          <p>${body.value}</p>
-        </div>
-        <div class="comment-button-wrapper">
-          <button id="comment-button">
-            <img src="assets/icons/comment.svg" alt="">
-          </button>
-          <p>Comment</p>
-        </div>
-      </output>`
-  var childNode = document.createRange().createContextualFragment(ideaCardHTML)
-  if (event.target.className === 'save-button') {
-    var idea = new Idea(title.value, body.value);
-    savedIdeaParentElement.appendChild(childNode);
-    idea.nodeValue = childNode;
-  };
-};
+createIdeaContainer.addEventListener('click', saveIdea);
+
+function saveIdea() {
+  var titleText = document.getElementById('titleInput').value;
+  var bodyText = document.getElementById('bodyInput').value;
+  if (event.target.id === 'saveButton') {
+    var idea = new Idea(titleText, bodyText);
+    idea.saveToStorage();
+    savedIdeaContainer.innerHTML  = '';
+    for (var i = 0; i < ideas.length; i++) {
+      savedIdeaContainer.innerHTML +=
+        `<output class="idea">
+    <header class="idea-header">
+      <button class="favorite-button" id="favoriteButton">
+        <img src="assets/icons/star-active.svg" alt="favorite-star">
+      </button>
+      <button class="close-button">
+        <img src="assets/icons/menu-close.svg" alt="menu-close">
+      </button>
+    </header>
+    <div class="idea-body">
+      <h4>${ideas[i].title}</h4>
+      <p>${ideas[i].body}</p>
+    </div>
+    <div class="comment-button-wrapper">
+      <button id="commentButton">
+        <img src="assets/icons/comment.svg" alt="">
+      </button>
+      <p>Comment</p>
+    </div>
+  </output>`;
+    }
+    document.getElementById('titleInput').value = '';
+    document.getElementById('bodyInput').value = '';
+  }
+}

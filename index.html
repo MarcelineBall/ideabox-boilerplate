@@ -11,20 +11,20 @@
   <nav class="sidebar">
     <h1 class="sidebar-element">IdeaBox</h1>
     <div class="sidebar-element">
-      <label for="show-starred-ideas-button">Filter Starred Ideas</label>
-      <button id="show-starred-ideas-button">Show Starred Ideas</button>
+      <label for="showStarredIdeasButton">Filter Starred Ideas</label>
+      <button id="showStarredIdeasButton">Show Starred Ideas</button>
     </div>
   </nav>
   <main>
     <fieldset class="create">
       <div class="create-inputs">
-        <label for="title-input">Title</label>
+        <label for="titleInput">Title</label>
         <textarea class="title-input" id="titleInput"></textarea>
-        <label for="body-input">Body</label>
+        <label for="bodyInput">Body</label>
         <textarea class="body-input" id="bodyInput"></textarea>
-        <button class="save-button" id="save-button">Save</button>
+        <button class="save-button" id="saveButton">Save</button>
         <div class="search-button-wrapper">
-          <button class="search-button" id="search-button">
+          <button class="search-button" id="searchButton">
             <img src="assets/icons/search.svg" alt="">
           </button>
           <input type="search" placeholder="Search Ideas">
@@ -32,10 +32,111 @@
       </div>
     </fieldset>
     <section class="saved">
-
-      <!-- start idea cards -->
-
-      <!-- <output class="idea hidden">
+      <!-- start -->
+      <!-- <output class="idea">
+        <header class="idea-header">
+          <button class="favorite-button" id="favoriteButton">
+            <img src="assets/icons/star-active.svg" alt="favorite-star">
+          </button>
+          <button class="close-button">
+            <img src="assets/icons/menu-close.svg" alt="menu-close">
+          </button>
+        </header>
+        <div class="idea-body">
+          <h4>Idea Title</h4>
+          <p>Idea Body. Don't ever play yourself drink water and stuff. Blah blah blah blah blah blahIdea Body. Don't ever play yourself drink water and stuff. Blah blah blah blah blah blahIdea Body. Don't ever play yourself drink water and stuff.
+            Blah blah blah blah blah blahDon't ever play yourself drink water and stuff. Blah blah blah blah blah blahIdea Body. Don't ever play yourself drink water and stuff. Blah blah blah blah blah blahIdea Body. Don't ever play yourself drink
+            water and stuff. Blah blah blah blah blah blahDon't ever play yourself drink water and stuff. Blah blah blah blah blah blahIdea Body. Don't ever play yourself drink water and stuff. Blah blah blah blah blah blahIdea Body. Don't ever play
+            yourself drink water and stuff. Blah blah blah blah blah blah</p>
+        </div>
+        <div class="comment-button-wrapper">
+          <button id="commentButton">
+            <img src="assets/icons/comment.svg" alt="">
+          </button>
+          <p>Comment</p>
+        </div>
+      </output>
+      <output class="idea">
+        <header class="idea-header">
+          <button class="favorite-button" id="favoriteButton">
+            <img src="assets/icons/star-active.svg" alt="favorite-star">
+          </button>
+          <button class="close-button">
+            <img src="assets/icons/menu-close.svg" alt="menu-close">
+          </button>
+        </header>
+        <div class="idea-body">
+          <h4>Idea Title</h4>
+          <p>Idea Body. Don't ever play yourself drink water and stuff. Blah blah blah blah blah blah</p>
+        </div>
+        <div class="comment-button-wrapper">
+          <button id="commentButton">
+            <img src="assets/icons/comment.svg" alt="">
+          </button>
+          <p>Comment</p>
+        </div>
+      </output>
+      <output class="idea">
+        <header class="idea-header">
+          <button class="favorite-button" id="favoriteButton">
+            <img src="assets/icons/star-active.svg" alt="favorite-star">
+          </button>
+          <button class="close-button">
+            <img src="assets/icons/menu-close.svg" alt="menu-close">
+          </button>
+        </header>
+        <div class="idea-body">
+          <h4>Idea Title</h4>
+          <p>Idea Body. Don't ever play yourself drink water and stuff. Blah blah blah blah blah blah</p>
+        </div>
+        <div class="comment-button-wrapper">
+          <button id="commentButton">
+            <img src="assets/icons/comment.svg" alt="">
+          </button>
+          <p>Comment</p>
+        </div>
+      </output>
+      <output class="idea">
+        <header class="idea-header">
+          <button class="favorite-button" id="favoriteButton">
+            <img src="assets/icons/star-active.svg" alt="favorite-star">
+          </button>
+          <button class="close-button">
+            <img src="assets/icons/menu-close.svg" alt="menu-close">
+          </button>
+        </header>
+        <div class="idea-body">
+          <h4>Idea Title</h4>
+          <p>Idea Body. Don't ever play yourself drink water and stuff. Blah blah blah blah blah blah</p>
+        </div>
+        <div class="comment-button-wrapper">
+          <button id="commentButton">
+            <img src="assets/icons/comment.svg" alt="">
+          </button>
+          <p>Comment</p>
+        </div>
+      </output>
+      <output class="idea">
+        <header class="idea-header">
+          <button class="favorite-button" id="favoriteButton">
+            <img src="assets/icons/star-active.svg" alt="favorite-star">
+          </button>
+          <button class="close-button">
+            <img src="assets/icons/menu-close.svg" alt="menu-close">
+          </button>
+        </header>
+        <div class="idea-body">
+          <h4>Idea Title</h4>
+          <p>Idea Body. Don't ever play yourself drink water and stuff. Blah blah blah blah blah blah</p>
+        </div>
+        <div class="comment-button-wrapper">
+          <button id="comment-button">
+            <img src="assets/icons/comment.svg" alt="">
+          </button>
+          <p>Comment</p>
+        </div>
+      </output>
+      <output class="idea">
         <header class="idea-header">
           <button class="favorite-button" id="favorite-button">
             <img src="assets/icons/star-active.svg" alt="favorite-star">
@@ -55,9 +156,7 @@
           <p>Comment</p>
         </div>
       </output> -->
-
-      <!-- ok end idea cards -->
-      
+      <!-- ok end -->
     </section>
   </main>
   <script src="./src/idea.js"></script>
