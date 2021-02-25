@@ -1,40 +1,47 @@
 class Idea {
   constructor(title, body) {
+    this.id = Date.now()
     this.title = title;
     this.body = body;
     this.isFavorite = false;
-    ideas.push(this)
-  };
+  }
+  saveToStorage() {
+    if (!ideas.includes(this)) {
+      ideas.push(this);
+    }
+  }
   deleteFromStorage() {
-    for (var i = 0; i < starredIdeas.length; i++) {
-      if (starredIdeas[i] === this) {
-        starredIdeas.splice(i, 1);
-      };
-    };
     for (var i = 0; i < ideas.length; i++) {
       if (ideas[i] === this) {
         ideas.splice(i, 1);
-      };
-    };
-  };
-  // may need this for future
+      }
+    }
+    for (var i = 0; i < favoriteIdeas.length; i++) {
+      if (favoriteIdeas[i] === this) {
+        favoriteIdeas.splice(i, 1)
+      }
+    }
+  }
   updateTitle(title) {
     this.title = title;
-  };
+  }
   updateBody(body) {
-    this.body = body
-  };
-  updateFavoriteStatus(boolean) {
-    this.isFavorite = boolean;
-    if (!starredIdeas.includes(this) &&
-      this.isFavorite) {
-      starredIdeas.push(this)
-    } else if (!this.isFavorite) {
-      for (var i = 0; i < starredIdeas.length; i++) {
-        if (starredIdeas[i] === this) {
-          starredIdeas.splice(i, 1);
-        };
-      };
-    };
-  };
+    this.body = body;
+  }
+  updateIsFavorite() {
+    if (!favoriteIdeas.includes(this)) {
+      favoriteIdeas.push(this);
+      this.isFavorite = true
+    } else if (favoriteIdeas.includes(this)) {
+      for (var i = 0; i < favoriteIdeas.length; i++) {
+        this.isFavorite = false;
+        favoriteIdeas.splice(i, 1);
+      }
+    }
+  }
+  updateIdea(title, body) {
+    this.updateTitle(title);
+    this.updateBody(body);
+    this.updateIsFavorite();
+  }
 };

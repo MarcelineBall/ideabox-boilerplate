@@ -1,5 +1,5 @@
 var ideas = [];
-var starredIdeas = [];
+var favoriteIdeas = [];
 var createIdeaParentElement = document.querySelector('.create-inputs');
 var savedIdeaParentElement = document.querySelector('.saved');
 
