@@ -39,5 +39,4 @@ function saveIdea() {
     document.getElementById('titleInput').value = '';
     document.getElementById('bodyInput').value = '';
   }
-
 }
