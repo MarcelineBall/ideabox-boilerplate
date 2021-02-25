@@ -154,6 +154,10 @@ main {
   display: block;
   background-color: #353567;
 }
+.save-button:hover:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
 
 .search-button-wrapper {
   height: 2.5em;
