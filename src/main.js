@@ -5,9 +5,11 @@ var createIdeaContainer = document.querySelector('.create');
 var savedIdeaContainer = document.querySelector('.saved');
 var titleInput = document.getElementById('titleInput');
 var bodyInput = document.getElementById('bodyInput');
+var saveButton = document.getElementById('saveButton')
 
 createIdeaContainer.addEventListener('click', saveIdea);
-window.addEventListener('load', disableButton);
+window.addEventListener('load', checkTextInputs);
+createIdeaContainer.addEventListener('keyup', checkTextInputs);
 
 function saveIdea() {
   var titleText = titleInput.value;
@@ -18,7 +20,7 @@ function saveIdea() {
     savedIdeaContainer.innerHTML = '';
     for (var i = 0; i < ideas.length; i++) {
       savedIdeaContainer.innerHTML +=
-        `<output class="idea">
+        `<output id="${ideas[i].id}" class="idea">
     <header class="idea-header">
       <button class="favorite-button" id="favoriteButton">
         <img src="assets/icons/star-active.svg" alt="favorite-star">
@@ -42,9 +44,10 @@ function saveIdea() {
     document.getElementById('titleInput').value = '';
     document.getElementById('bodyInput').value = '';
   };
+  checkTextInputs();
 };
 
-function disableButton() {
+function checkTextInputs() {
   if (!titleInput.value ||
     !bodyInput.value) {
     saveButton.disabled = true;
@@ -52,4 +55,3 @@ function disableButton() {
     saveButton.disabled = false;
   };
 };
-var saveButton = document.getElementById('saveButton')

@@ -60,6 +60,7 @@ button {
   border-radius: 3px;
   padding: .5em 1.5em;
   display: contents;
+  cursor: pointer;
 }
 
 .sidebar {
