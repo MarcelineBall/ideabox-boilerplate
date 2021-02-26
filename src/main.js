@@ -3,19 +3,24 @@ var favoriteIdeas = [];
 
 var createIdeaContainer = document.querySelector('.create');
 var savedIdeaContainer = document.querySelector('.saved');
+var titleInput = document.getElementById('titleInput');
+var bodyInput = document.getElementById('bodyInput');
+var saveButton = document.getElementById('saveButton')
 
 createIdeaContainer.addEventListener('click', saveIdea);
+window.addEventListener('load', checkTextInputs);
+createIdeaContainer.addEventListener('keyup', checkTextInputs);
 
 function saveIdea() {
-  var titleText = document.getElementById('titleInput').value;
-  var bodyText = document.getElementById('bodyInput').value;
+  var titleText = titleInput.value;
+  var bodyText = bodyInput.value;
   if (event.target.id === 'saveButton') {
     var idea = new Idea(titleText, bodyText);
     idea.saveToStorage();
-    savedIdeaContainer.innerHTML  = '';
+    savedIdeaContainer.innerHTML = '';
     for (var i = 0; i < ideas.length; i++) {
       savedIdeaContainer.innerHTML +=
-        `<output class="idea">
+        `<output id="${ideas[i].id}" class="idea">
     <header class="idea-header">
       <button class="favorite-button" id="favoriteButton">
         <img src="assets/icons/star-active.svg" alt="favorite-star">
@@ -38,5 +43,15 @@ function saveIdea() {
     }
     document.getElementById('titleInput').value = '';
     document.getElementById('bodyInput').value = '';
-  }
-}
+  };
+  checkTextInputs();
+};
+
+function checkTextInputs() {
+  if (!titleInput.value ||
+    !bodyInput.value) {
+    saveButton.disabled = true;
+  } else {
+    saveButton.disabled = false;
+  };
+};
