@@ -62,15 +62,12 @@ function renderIdeaCards() {
  </output>`;
   };
 };
-// 1. target the delete button with event.target === delete button
-// 2. access the <output> element's id and match it to the ideas array
-// 3. run some type of function/method to remove that from the ideas array
-// 4. re-render the cards
+
 function cardManagement() {
   deleteCard();
   favoriteIdea();
 }
-// could refactor in future to incorporate Idea.deleteFromStorage method 👇
+
 function deleteCard() {
   if (event.target.id === 'closeButton' ||
     event.target.id === 'menuClose') {
@@ -84,17 +81,15 @@ function deleteCard() {
   };
 };
 
-function changeStar() {
-  var favoriteStar = document.getElementById('favoriteStarActive');
-  favoriteStar.classList.toggle('hidden')
+function changeStarColor() {
+event.target.closest('output').children[0].children[0].children[1].classList.toggle('hidden');
 };
-// document.getElementById('favoriteStar').src = 'assets/icons/star-active.svg'
-// document.getElementById('favoriteStar').src = 'assets/icons/star.svg'
+
 function favoriteIdea() {
   if (event.target.id === 'favoriteButton' ||
     event.target.id === 'favoriteStar' ||
     event.target.id === 'favoriteStarActive') {
-    changeStar()
+    changeStarColor()
     var elements = event.composedPath();
     var id;
     for (var value of elements.values()) {
