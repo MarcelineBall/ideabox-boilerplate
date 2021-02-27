@@ -11,7 +11,7 @@ createIdeaContainer.addEventListener('click', saveIdea);
 window.addEventListener('load', checkTextInputs);
 // window.addEventListener('click', deleteCard);
 createIdeaContainer.addEventListener('keyup', checkTextInputs);
-savedIdeaContainer.addEventListener('click', deleteCard);
+savedIdeaContainer.addEventListener('click', cardManagement);
 
 function saveIdea() {
   var titleText = titleInput.value;
@@ -65,17 +65,32 @@ function renderIdeaCards() {
 // 2. access the <output> element's id and match it to the ideas array
 // 3. run some type of function/method to remove that from the ideas array
 // 4. re-render the cards
-
+function cardManagement() {
+  deleteCard();
+  favoriteIdea();
+}
+// could refactor in future to incorporate Idea.deleteFromStorage method 👇
 function deleteCard() {
   if (event.target.id === 'closeButton') {
-    console.log(event.currentTarget.querySelector('output').id);
     var cardId = event.currentTarget.querySelector('output').id;
     for (var i = 0; i < ideas.length; i++) {
       if (ideas[i].id.toString() === cardId) {
-        console.log('true');
         ideas.splice(i, 1);
       }
       renderIdeaCards();
+    };
+  };
+};
+
+function favoriteIdea() {
+  if (event.target.id === 'favoriteButton') {
+    if (event.currentTarget.querySelector('img').src !== 'assets/icons/star-active.svg') {
+      event.currentTarget.querySelector('img').src = 'assets/icons/star-active.svg';
+    } else if (event.currentTarget.querySelector('img').src === 'assets/icons/star-active.svg') {
+      event.currentTarget.querySelector('img').src = 'assets/icons/star.svg'
     }
+
+    console.log(event.currentTarget.querySelector('img').src);
+
   }
 }
