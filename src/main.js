@@ -42,10 +42,11 @@ function renderIdeaCards() {
       `<output id="${ideas[i].id}" class="idea">
   <header class="idea-header">
     <button class="favorite-button" id="favoriteButton">
-      <img src="assets/icons/star.svg" alt="favorite-star">
+      <img id="favoriteStar" src="assets/icons/star.svg" alt="favorite-star">
+      <img class="active-star hidden" id="favoriteStarActive" src="assets/icons/star-active.svg" alt="favorite-star-active">
     </button>
     <button id="closeButton" class="close-button">
-      <img src="assets/icons/menu-close.svg" alt="menu-close">
+      <img id="menuClose" src="assets/icons/menu-close.svg" alt="menu-close">
     </button>
   </header>
   <div class="idea-body">
@@ -54,7 +55,7 @@ function renderIdeaCards() {
   </div>
   <div class="comment-button-wrapper">
     <button id="commentButton">
-      <img src="assets/icons/comment.svg" alt="">
+      <img src="assets/icons/comment.svg" alt="comment-button">
     </button>
     <p>Comment</p>
   </div>
@@ -71,26 +72,40 @@ function cardManagement() {
 }
 // could refactor in future to incorporate Idea.deleteFromStorage method 👇
 function deleteCard() {
-  if (event.target.id === 'closeButton') {
+  if (event.target.id === 'closeButton' ||
+    event.target.id === 'menuClose') {
     var cardId = event.currentTarget.querySelector('output').id;
     for (var i = 0; i < ideas.length; i++) {
       if (ideas[i].id.toString() === cardId) {
-        ideas.splice(i, 1);
-      }
+        ideas[i].deleteFromStorage();
+      };
       renderIdeaCards();
     };
   };
 };
 
+function changeStar() {
+  var favoriteStar = document.getElementById('favoriteStarActive');
+  favoriteStar.classList.toggle('hidden')
+};
+// document.getElementById('favoriteStar').src = 'assets/icons/star-active.svg'
+// document.getElementById('favoriteStar').src = 'assets/icons/star.svg'
 function favoriteIdea() {
-  if (event.target.id === 'favoriteButton') {
-    if (event.currentTarget.querySelector('img').src !== 'assets/icons/star-active.svg') {
-      event.currentTarget.querySelector('img').src = 'assets/icons/star-active.svg';
-    } else if (event.currentTarget.querySelector('img').src === 'assets/icons/star-active.svg') {
-      event.currentTarget.querySelector('img').src = 'assets/icons/star.svg'
-    }
-
-    console.log(event.currentTarget.querySelector('img').src);
-
-  }
-}
+  if (event.target.id === 'favoriteButton' ||
+    event.target.id === 'favoriteStar' ||
+    event.target.id === 'favoriteStarActive') {
+    changeStar()
+    var elements = event.composedPath();
+    var id;
+    for (var value of elements.values()) {
+      if (value.className === 'idea') {
+        id = value.id
+      };
+    };
+    for (var i = 0; i < ideas.length; i++) {
+      if (ideas[i].id.toString() === id) {
+        ideas[i].updateIsFavorite();
+      };
+    };
+  };
+};
