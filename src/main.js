@@ -9,7 +9,9 @@ var saveButton = document.getElementById('saveButton')
 
 createIdeaContainer.addEventListener('click', saveIdea);
 window.addEventListener('load', checkTextInputs);
+// window.addEventListener('click', deleteCard);
 createIdeaContainer.addEventListener('keyup', checkTextInputs);
+savedIdeaContainer.addEventListener('click', cardManagement);
 
 function saveIdea() {
   var titleText = titleInput.value;
@@ -17,30 +19,7 @@ function saveIdea() {
   if (event.target.id === 'saveButton') {
     var idea = new Idea(titleText, bodyText);
     idea.saveToStorage();
-    savedIdeaContainer.innerHTML = '';
-    for (var i = 0; i < ideas.length; i++) {
-      savedIdeaContainer.innerHTML +=
-        `<output id="${ideas[i].id}" class="idea">
-    <header class="idea-header">
-      <button class="favorite-button" id="favoriteButton">
-        <img src="assets/icons/star-active.svg" alt="favorite-star">
-      </button>
-      <button class="close-button">
-        <img src="assets/icons/menu-close.svg" alt="menu-close">
-      </button>
-    </header>
-    <div class="idea-body">
-      <h4>${ideas[i].title}</h4>
-      <p>${ideas[i].body}</p>
-    </div>
-    <div class="comment-button-wrapper">
-      <button id="commentButton">
-        <img src="assets/icons/comment.svg" alt="">
-      </button>
-      <p>Comment</p>
-    </div>
-  </output>`;
-    }
+    renderIdeaCards();
     document.getElementById('titleInput').value = '';
     document.getElementById('bodyInput').value = '';
   };
@@ -53,5 +32,75 @@ function checkTextInputs() {
     saveButton.disabled = true;
   } else {
     saveButton.disabled = false;
+  };
+};
+
+function renderIdeaCards() {
+  savedIdeaContainer.innerHTML = '';
+  for (var i = 0; i < ideas.length; i++) {
+    savedIdeaContainer.innerHTML +=
+      `<output id="${ideas[i].id}" class="idea">
+  <header class="idea-header">
+    <button class="favorite-button" id="favoriteButton">
+      <img id="favoriteStar" src="assets/icons/star.svg" alt="favorite-star">
+      <img class="active-star hidden" id="favoriteStarActive" src="assets/icons/star-active.svg" alt="favorite-star-active">
+    </button>
+    <button id="closeButton" class="close-button">
+      <img id="menuClose" src="assets/icons/menu-close.svg" alt="menu-close">
+    </button>
+  </header>
+  <div class="idea-body">
+    <h4>${ideas[i].title}</h4>
+    <p>${ideas[i].body}</p>
+  </div>
+  <div class="comment-button-wrapper">
+    <button id="commentButton">
+      <img src="assets/icons/comment.svg" alt="comment-button">
+    </button>
+    <p>Comment</p>
+  </div>
+ </output>`;
+  };
+};
+
+function cardManagement() {
+  deleteCard();
+  favoriteIdea();
+}
+
+function deleteCard() {
+  if (event.target.id === 'closeButton' ||
+    event.target.id === 'menuClose') {
+    var cardId = event.currentTarget.querySelector('output').id;
+    for (var i = 0; i < ideas.length; i++) {
+      if (ideas[i].id.toString() === cardId) {
+        ideas[i].deleteFromStorage();
+      };
+      renderIdeaCards();
+    };
+  };
+};
+
+function changeStarColor() {
+event.target.closest('output').children[0].children[0].children[1].classList.toggle('hidden');
+};
+
+function favoriteIdea() {
+  if (event.target.id === 'favoriteButton' ||
+    event.target.id === 'favoriteStar' ||
+    event.target.id === 'favoriteStarActive') {
+    changeStarColor()
+    var elements = event.composedPath();
+    var id;
+    for (var value of elements.values()) {
+      if (value.className === 'idea') {
+        id = value.id
+      };
+    };
+    for (var i = 0; i < ideas.length; i++) {
+      if (ideas[i].id.toString() === id) {
+        ideas[i].updateIsFavorite();
+      };
+    };
   };
 };
