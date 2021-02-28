@@ -1,15 +1,17 @@
 class Idea {
-  constructor(title, body) {
-    this.id = Date.now()
+  constructor(title, body, id, isFavorite) {
+    this.id = id || Math.floor(Date.now() * Math.random());
     this.title = title;
     this.body = body;
-    this.isFavorite = false;
+    this.isFavorite = isFavorite || false;
   };
+
   saveToStorage() {
     if (!ideas.includes(this)) {
       ideas.push(this);
     };
   };
+
   deleteFromStorage() {
     for (var i = 0; i < ideas.length; i++) {
       if (ideas[i] === this) {
@@ -22,12 +24,15 @@ class Idea {
       };
     };
   };
+
   updateTitle(title) {
     this.title = title;
   };
+
   updateBody(body) {
     this.body = body;
   };
+
   updateIsFavorite() {
     if (!this.isFavorite) {
       favoriteIdeas.push(this);
@@ -41,6 +46,7 @@ class Idea {
       };
     };
   };
+
   updateIdea(title, body) {
     this.updateTitle(title);
     this.updateBody(body);
