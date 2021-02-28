@@ -12,6 +12,20 @@ window.addEventListener('load', pullIdeasFromStorage);
 createIdeaContainer.addEventListener('keyup', checkTextInputs);
 savedIdeaContainer.addEventListener('click', cardManagement);
 
+function cardManagement() {
+  deleteCard();
+  favoriteIdea();
+};
+
+function checkTextInputs() {
+  if (!titleInput.value ||
+    !bodyInput.value) {
+    saveButton.disabled = true;
+  } else {
+    saveButton.disabled = false;
+  };
+};
+
 function saveIdea() {
   var titleText = titleInput.value;
   var bodyText = bodyInput.value;
@@ -26,34 +40,34 @@ function saveIdea() {
   checkTextInputs();
 };
 
-function checkTextInputs() {
-  if (!titleInput.value ||
-    !bodyInput.value) {
-    saveButton.disabled = true;
-  } else {
-    saveButton.disabled = false;
-  };
-};
-
 function pullIdeasFromStorage() {
   var keys = Object.keys(localStorage)
   for (var i = 0; i < keys.length; i++) {
-      var ideaData = JSON.parse(localStorage.getItem(keys[i]));
-      var idea = new Idea(ideaData.title, ideaData.body, parseInt(keys[i]))
-      ideas.push(idea)
+    var ideaData = JSON.parse(localStorage.getItem(keys[i]));
+    var idea = new Idea(ideaData.title, ideaData.body, parseInt(keys[i]), ideaData.isFavorite);
+    idea.saveToStorage();
+    if (idea.isFavorite) {
+      favoriteIdeas.push(idea);
     };
-    renderIdeaCards();
+  };
+  renderIdeaCards();
 };
 
 function renderIdeaCards() {
+  var redStarShowOrNo;
   savedIdeaContainer.innerHTML = '';
   for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].isFavorite) {
+      redStarShowOrNo = ''
+    } else {
+      redStarShowOrNo = 'hidden'
+    };
     savedIdeaContainer.innerHTML +=
       `<output id="${ideas[i].id}" class="idea">
   <header class="idea-header">
     <button class="favorite-button" id="favoriteButton">
       <img id="favoriteStar" src="assets/icons/star.svg" alt="favorite-star">
-      <img class="active-star hidden" id="favoriteStarActive" src="assets/icons/star-active.svg" alt="favorite-star-active">
+      <img class="active-star ${redStarShowOrNo}" id="favoriteStarActive" src="assets/icons/star-active.svg" alt="favorite-star-active">
     </button>
     <button id="closeButton" class="close-button">
       <img id="menuClose" src="assets/icons/menu-close.svg" alt="menu-close">
@@ -73,11 +87,6 @@ function renderIdeaCards() {
   };
 };
 
-function cardManagement() {
-  deleteCard();
-  favoriteIdea();
-}
-
 function deleteCard() {
   if (event.target.id === 'closeButton' ||
     event.target.id === 'menuClose') {
@@ -94,7 +103,8 @@ function deleteCard() {
 };
 
 function changeStarColor() {
-event.target.closest('output').children[0].children[0].children[1].classList.toggle('hidden');
+  var imgElement = event.target.closest('output').children[0].children[0].children[1];
+  imgElement.classList.toggle('hidden')
 };
 
 function favoriteIdea() {
@@ -112,6 +122,7 @@ function favoriteIdea() {
     for (var i = 0; i < ideas.length; i++) {
       if (ideas[i].id.toString() === id) {
         ideas[i].updateIsFavorite();
+        localStorage.setItem(`${id}`, JSON.stringify(ideas[i]));
       };
     };
   };
