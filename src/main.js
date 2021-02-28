@@ -7,12 +7,14 @@ var titleInput = document.getElementById('titleInput');
 var bodyInput = document.getElementById('bodyInput');
 var saveButton = document.getElementById('saveButton');
 var navBar = document.querySelector('.sidebar');
+var searchInput = document.getElementById('searchInput');
 
 createIdeaContainer.addEventListener('click', saveIdea);
 window.addEventListener('load', pullIdeasFromStorage);
 createIdeaContainer.addEventListener('keyup', checkTextInputs);
 savedIdeaContainer.addEventListener('click', cardManagement);
 navBar.addEventListener('click', filterIdeas);
+searchInput.addEventListener('keyup', filterSearch)
 
 function cardManagement() {
   deleteCard();
@@ -171,6 +173,22 @@ function filterIdeas() {
     } else if (event.target.innerText === 'Show All Ideas') {
       event.target.innerText = 'Show Starred Ideas';
       renderIdeaCards();
-    }
-  }
-}
+    };
+  };
+};
+
+function filterSearch() {
+  var searchInputText = searchInput.value.toUpperCase();
+  var cards = document.querySelectorAll('.idea');
+  var cardTextContainer = document.querySelectorAll('.idea-body');
+  for (var i = 0; i < cardTextContainer.length; i++) {
+    var title = cardTextContainer[i].querySelector('h4');
+    var body = cardTextContainer[i].querySelector('p');
+    var textValue = title.innerText || body.innerText;
+    if (textValue.toUpperCase().indexOf(searchInputText) > -1) {
+      cards[i].style.display = '';
+    } else {
+      cards[i].style.display = 'none';
+    };
+  };
+};
