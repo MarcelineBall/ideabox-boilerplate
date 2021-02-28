@@ -8,8 +8,7 @@ var bodyInput = document.getElementById('bodyInput');
 var saveButton = document.getElementById('saveButton')
 
 createIdeaContainer.addEventListener('click', saveIdea);
-window.addEventListener('load', checkTextInputs);
-// window.addEventListener('click', deleteCard);
+window.addEventListener('load', pullIdeasFromStorage);
 createIdeaContainer.addEventListener('keyup', checkTextInputs);
 savedIdeaContainer.addEventListener('click', cardManagement);
 
@@ -19,6 +18,7 @@ function saveIdea() {
   if (event.target.id === 'saveButton') {
     var idea = new Idea(titleText, bodyText);
     idea.saveToStorage();
+    localStorage.setItem(`${idea.id}`, JSON.stringify(idea));
     renderIdeaCards();
     document.getElementById('titleInput').value = '';
     document.getElementById('bodyInput').value = '';
@@ -33,6 +33,16 @@ function checkTextInputs() {
   } else {
     saveButton.disabled = false;
   };
+};
+
+function pullIdeasFromStorage() {
+  var keys = Object.keys(localStorage)
+  for (var i = 0; i < keys.length; i++) {
+      var ideaData = JSON.parse(localStorage.getItem(keys[i]));
+      var idea = new Idea(ideaData.title, ideaData.body, ideaData.id)
+      ideas.push(idea)
+    };
+    renderIdeaCards();
 };
 
 function renderIdeaCards() {
@@ -71,10 +81,12 @@ function cardManagement() {
 function deleteCard() {
   if (event.target.id === 'closeButton' ||
     event.target.id === 'menuClose') {
-    var cardId = event.currentTarget.querySelector('output').id;
+    var cardId = event.target.closest('output').id;
     for (var i = 0; i < ideas.length; i++) {
       if (ideas[i].id.toString() === cardId) {
+        // console.log(ideas[i])
         ideas[i].deleteFromStorage();
+        // ideas.splice(i, 1);
       };
       renderIdeaCards();
     };
