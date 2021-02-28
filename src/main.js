@@ -39,7 +39,7 @@ function pullIdeasFromStorage() {
   var keys = Object.keys(localStorage)
   for (var i = 0; i < keys.length; i++) {
       var ideaData = JSON.parse(localStorage.getItem(keys[i]));
-      var idea = new Idea(ideaData.title, ideaData.body, ideaData.id)
+      var idea = new Idea(ideaData.title, ideaData.body, parseInt(keys[i]))
       ideas.push(idea)
     };
     renderIdeaCards();
@@ -82,11 +82,11 @@ function deleteCard() {
   if (event.target.id === 'closeButton' ||
     event.target.id === 'menuClose') {
     var cardId = event.target.closest('output').id;
+    console.log(cardId)
     for (var i = 0; i < ideas.length; i++) {
       if (ideas[i].id.toString() === cardId) {
-        // console.log(ideas[i])
+        localStorage.removeItem(cardId);
         ideas[i].deleteFromStorage();
-        // ideas.splice(i, 1);
       };
       renderIdeaCards();
     };

@@ -1,6 +1,6 @@
 class Idea {
   constructor(title, body, id) {
-    this.id = Date.now() * Math.random() || id;
+    this.id = id || Math.floor(Date.now() * Math.random());
     this.title = title;
     this.body = body;
     this.isFavorite = false;
