@@ -1,9 +1,9 @@
 class Idea {
-  constructor(title, body, id) {
+  constructor(title, body, id, isFavorite) {
     this.id = id || Math.floor(Date.now() * Math.random());
     this.title = title;
     this.body = body;
-    this.isFavorite = false;
+    this.isFavorite = isFavorite || false;
   };
 
   saveToStorage() {
