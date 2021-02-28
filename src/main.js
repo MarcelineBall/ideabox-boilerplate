@@ -45,7 +45,10 @@ function pullIdeasFromStorage() {
   for (var i = 0; i < keys.length; i++) {
     var ideaData = JSON.parse(localStorage.getItem(keys[i]));
     var idea = new Idea(ideaData.title, ideaData.body, parseInt(keys[i]), ideaData.isFavorite);
-    ideas.push(idea)
+    idea.saveToStorage();
+    if (idea.isFavorite) {
+      favoriteIdeas.push(idea);
+    };
   };
   renderIdeaCards();
 };
