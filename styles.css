@@ -246,18 +246,23 @@ main {
   justify-content: center;
   align-items: center;
 }
-
-.favorite-button>img {
-  /* height: 100%; */
+.star-container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.empty-star {
+  position: relative;
   width: 2.1em;
   max-height: 2.3em;
 }
 
-/* refactor later */
+
 .active-star {
   position: absolute;
-  width: 2.4em!important;
-  max-height: 2.6em!important;
+  width: 2.4em;
+  max-height: 2.6em;
   opacity: 1;
   transition: opacity 0.3s ease-in;
 }
