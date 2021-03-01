@@ -1,37 +1,12 @@
-/*
-FONTS
-  Header Text: Open Sans, Bold
-  Body & Label: Open Sans, Light
-COLORS
-  Main Page Colors:
-    Dark: #1F1F3D
-    Mid: #A9AAD2
-    Light: #EAEAF4
-  Idea Box Colors:
-    Header: #1F1F3D
-    BG: #FFFFFF
-    Font-Color: #1F1F3D
-  Comment Box Colors:
-    BG-Color: #5356A4
-    Font-Color: #E9E9F3
-  Side Bar Colors:
-    BG: #1F1F3D
-    Title: #E9E9F3
-    Line-Breaks: #353567
-    Filter Starred: #BFBFDD
-    Show Starred BG: #5356A4
-    Show Starred Font-Color: #E9E9F3
- */
 html {
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
-  background-attachment: fixed;
+  height: 100%;
+  width: 100%;
   padding: 0;
   margin: 0;
-  height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
@@ -61,12 +36,24 @@ button {
   cursor: pointer;
   box-sizing: content-box;
 }
+
 button:focus {
   outline: none;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
+button:hover:disabled {
+  cursor: not-allowed;
+}
+
 .sidebar {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-height: 100%;
   width: 20%;
   min-width: 10em;
   background-color: #1F1F3D;
@@ -96,6 +83,12 @@ button:focus {
   display: block;
   background-color: #5356A4;
   border-color: #353567;
+  -webkit-user-select: none;
+  transition: background-color .3s ease-out;
+}
+
+.sidebar-element>button:hover {
+  background-color: #1F1F3D;
 }
 
 main {
@@ -120,7 +113,6 @@ main {
   max-width: 30em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: stretch;
   overflow-y: scroll;
 }
@@ -134,29 +126,30 @@ main {
 }
 
 .create-inputs>label {
+  padding-top: 3%;
   font-weight: bold;
 }
 
-.create-inputs>textarea {
-  min-height: 2em;
-}
-
 .title-input {
-  height: 0.1em;
+  min-height: 1.4em;
+  max-height: 1.4em;
   font-weight: 400;
   font-size: 2em;
 }
 
 .body-input {
-  height: 10em;
-  font-size: 100%;
+  min-height: 8em;
+  max-height: 8em;
+  font-size: 150%;
 }
 
 .save-button {
-  min-height: 2.5em;
+  min-height: 2.7em;
   display: block;
   background-color: #353567;
+  transition: background-color .3s ease-out;
 }
+
 .save-button:hover:disabled {
   background-color: #5356A4;
   cursor: not-allowed;
@@ -181,6 +174,10 @@ main {
   align-items: center;
 }
 
+.search-button:hover {
+  cursor: default;
+}
+
 .search-button>img {
   height: 60%;
   padding: 0 2%;
@@ -195,7 +192,7 @@ main {
 }
 
 .saved {
-  height: 50%;
+  height: 100%;
   background-color: #EAEAF4;
   padding: 1% 1% 5% 1%;
   display: flex;
@@ -227,8 +224,6 @@ main {
   align-items: flex-start;
 }
 
-
-
 .idea-header {
   height: 2em;
   width: 100%;
@@ -237,6 +232,7 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+
 .idea-header>button {
   background-color: inherit;
   border: none;
@@ -247,17 +243,21 @@ main {
   align-items: center;
 }
 
-.favorite-button>img {
-  /* height: 100%; */
-  width: 2.1em;
-  max-height: 2.3em;
+.star-container{
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-/* refactor later */
+.empty-star {
+  width: 2em;
+  transform: scale(.99);
+}
+
+
 .active-star {
   position: absolute;
-  width: 2.4em!important;
-  max-height: 2.6em!important;
+  transform: scale(1.2);
   opacity: 1;
   transition: opacity 0.3s ease-in;
 }
@@ -281,6 +281,7 @@ main {
   align-self: flex-start;
   margin: 0;
   margin-bottom: 4%;
+  word-break: break-all;
 }
 
 .idea-body>p {
@@ -288,7 +289,6 @@ main {
   align-self: center;
   width: 11em;
   margin: 0;
-=======
   display: block;
   align-self: center;
   width: 11em;
@@ -297,6 +297,7 @@ main {
   hyphens: auto;
   overflow-y: scroll;
 }
+
 .idea-body>p::-webkit-scrollbar {
   display: none !important;
 }
