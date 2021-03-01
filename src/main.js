@@ -78,8 +78,10 @@ function renderIdeaCards() {
       `<output id="${ideas[i].id}" class="idea">
   <header class="idea-header">
     <button class="favorite-button" id="favoriteButton">
-      <img id="favoriteStar" src="assets/icons/star.svg" alt="favorite-star">
+      <div class="star-container">
+      <img class="empty-star" id="favoriteStar" src="assets/icons/star.svg" alt="favorite-star">
       <img class="active-star ${redStarShowOrNo}" id="favoriteStarActive" src="assets/icons/star-active.svg" alt="favorite-star-active">
+      </div>
     </button>
     <button id="closeButton" class="close-button">
       <img id="menuClose" src="assets/icons/menu-close.svg" alt="menu-close">
@@ -115,7 +117,7 @@ function deleteCard() {
 };
 
 function changeStarColor() {
-  var imgElement = event.target.closest('output').children[0].children[0].children[1];
+  var imgElement = event.target.closest('output').children[0].children[0].children[0].children[1];
   imgElement.classList.toggle('hidden')
 };
 
@@ -156,8 +158,10 @@ function filterFavoriteIdeas() {
           `<output id="${favoriteIdeas[i].id}" class="idea">
     <header class="idea-header">
       <button class="favorite-button" id="favoriteButton">
-        <img id="favoriteStar" src="assets/icons/star.svg" alt="favorite-star">
+        <div class="star-container">
+        <img class="empty-star" id="favoriteStar" src="assets/icons/star.svg" alt="favorite-star">
         <img class="active-star ${redStarShowOrNo}" id="favoriteStarActive" src="assets/icons/star-active.svg" alt="favorite-star-active">
+        </div>
       </button>
       <button id="closeButton" class="close-button">
         <img id="menuClose" src="assets/icons/menu-close.svg" alt="menu-close">

@@ -246,9 +246,14 @@ main {
   justify-content: center;
   align-items: center;
 }
-
-.favorite-button>img {
+.star-container{
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.empty-star {
   /* height: 100%; */
+  position: relative;
   width: 2.1em;
   max-height: 2.3em;
 }
@@ -256,8 +261,10 @@ main {
 /* refactor later */
 .active-star {
   position: absolute;
-  width: 2.4em!important;
-  max-height: 2.6em!important;
+  /* width: 2.4em!important;
+  max-height: 2.6em!important; */
+  width: 2.1em;
+  max-height: 2.3em;
   opacity: 1;
   transition: opacity 0.3s ease-in;
 }
