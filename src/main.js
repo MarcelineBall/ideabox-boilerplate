@@ -7,14 +7,23 @@ var titleInput = document.getElementById('titleInput');
 var bodyInput = document.getElementById('bodyInput');
 var saveButton = document.getElementById('saveButton');
 var navBar = document.querySelector('.sidebar');
-var searchInput = document.getElementById('searchInput');
 
-createIdeaContainer.addEventListener('click', saveIdea);
-window.addEventListener('load', pullIdeasFromStorage);
-createIdeaContainer.addEventListener('keyup', checkTextInputs);
+window.addEventListener('load', loadManagement);
+createIdeaContainer.addEventListener('click', createIdeaManagement);
+createIdeaContainer.addEventListener('keyup', createIdeaManagement);
 savedIdeaContainer.addEventListener('click', cardManagement);
-navBar.addEventListener('click', filterIdeas);
-searchInput.addEventListener('keyup', filterSearch)
+navBar.addEventListener('click', filterFavoriteIdeas);
+
+function loadManagement() {
+  checkTextInputs();
+  pullIdeasFromStorage();
+};
+
+function createIdeaManagement() {
+  saveIdea();
+  checkTextInputs();
+  filterSearch();
+};
 
 function cardManagement() {
   deleteCard();
@@ -31,17 +40,16 @@ function checkTextInputs() {
 };
 
 function saveIdea() {
-  var titleText = titleInput.value;
-  var bodyText = bodyInput.value;
   if (event.target.id === 'saveButton') {
+    var titleText = titleInput.value;
+    var bodyText = bodyInput.value;
     var idea = new Idea(titleText, bodyText);
     idea.saveToStorage();
     localStorage.setItem(`${idea.id}`, JSON.stringify(idea));
     renderIdeaCards();
-    document.getElementById('titleInput').value = '';
-    document.getElementById('bodyInput').value = '';
+    titleInput.value = '';
+    bodyInput.value = '';
   };
-  checkTextInputs();
 };
 
 function pullIdeasFromStorage() {
@@ -132,12 +140,9 @@ function favoriteIdea() {
   };
 };
 
-function filterIdeas() {
-  // debugger
+function filterFavoriteIdeas() {
   if (event.target.id === 'showStarredIdeasButton') {
     if (event.target.innerText === 'Show Starred Ideas') {
-
-
       event.target.innerText = 'Show All Ideas';
       var redStarShowOrNo;
       savedIdeaContainer.innerHTML = '';
@@ -178,17 +183,20 @@ function filterIdeas() {
 };
 
 function filterSearch() {
-  var searchInputText = searchInput.value.toUpperCase();
-  var cards = document.querySelectorAll('.idea');
-  var cardTextContainer = document.querySelectorAll('.idea-body');
-  for (var i = 0; i < cardTextContainer.length; i++) {
-    var title = cardTextContainer[i].querySelector('h4');
-    var body = cardTextContainer[i].querySelector('p');
-    var textValue = title.innerText || body.innerText;
-    if (textValue.toUpperCase().indexOf(searchInputText) > -1) {
-      cards[i].style.display = '';
-    } else {
-      cards[i].style.display = 'none';
+  var searchInput = document.getElementById('searchInput');
+  if (event.target.id === 'searchInput') {
+    var searchInputText = searchInput.value.toUpperCase();
+    var cards = document.querySelectorAll('.idea');
+    var cardTextContainer = document.querySelectorAll('.idea-body');
+    for (var i = 0; i < cardTextContainer.length; i++) {
+      var title = cardTextContainer[i].querySelector('h4');
+      var body = cardTextContainer[i].querySelector('p');
+      var textValue = title.innerText || body.innerText;
+      if (textValue.toUpperCase().indexOf(searchInputText) > -1) {
+        cards[i].style.display = '';
+      } else {
+        cards[i].style.display = 'none';
+      };
     };
   };
 };
