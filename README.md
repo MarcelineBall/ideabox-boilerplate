@@ -22,7 +22,7 @@ Every developer has more ideas than time. As David Allen likes to say "the human
 - Ability to add media content to ideas (picture, video, sound).
 
 ******************************************************************
-Github Pages Link: https://github.com/MarcelineBall/ideabox-boilerplate
+Github Pages Link: https://marcelineball.github.io/ideabox-boilerplate/
 
 #### Contributors:
 
