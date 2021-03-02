@@ -79,12 +79,12 @@ function renderIdeaCards() {
   <header class="idea-header">
     <button class="favorite-button" id="favoriteButton">
       <div class="star-container">
-      <img class="empty-star" id="favoriteStar" src="assets/icons/star.svg" alt="favorite-star">
-      <img class="active-star ${redStarShowOrNo}" id="favoriteStarActive" src="assets/icons/star-active.svg" alt="favorite-star-active">
+      <img class="empty-star" id="favoriteStar" src="assets/icons/star.svg" alt="grey star icon">
+      <img class="active-star ${redStarShowOrNo}" id="favoriteStarActive" src="assets/icons/star-active.svg" alt="red star icon">
       </div>
     </button>
     <button id="closeButton" class="close-button">
-      <img id="menuClose" src="assets/icons/menu-close.svg" alt="menu-close">
+      <img id="menuClose" src="assets/icons/menu-close.svg" alt="close page icon">
     </button>
   </header>
   <div class="idea-body">
@@ -93,7 +93,7 @@ function renderIdeaCards() {
   </div>
   <div class="comment-button-wrapper">
     <button id="commentButton">
-      <img src="assets/icons/comment.svg" alt="comment-button">
+      <img src="assets/icons/comment.svg" alt="comment icon">
     </button>
     <p>Comment</p>
   </div>

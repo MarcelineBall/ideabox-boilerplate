@@ -49,6 +49,13 @@ button:hover:disabled {
   cursor: not-allowed;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -89,13 +96,6 @@ button:hover:disabled {
 
 .sidebar-element>button:hover {
   background-color: #1F1F3D;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
 }
 
 .create {
